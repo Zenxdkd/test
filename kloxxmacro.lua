@@ -5,10 +5,11 @@ local Player = game:GetService("Players").LocalPlayer
                 if Key == "x" then
                     SpeedGlitch = not SpeedGlitch
                     if SpeedGlitch == true then
-                        repeat game:GetService("VirtualInputManager"):SendMouseWheelEvent("0", "0", true, game)
-                                    wait(0.000001)
+                        repeat game:GetService("RunService").Heartbeat:wait()
+                               game:GetService("VirtualInputManager"):SendMouseWheelEvent("0", "0", true, game)
+                                    game:GetService("RunService").Heartbeat:wait()
                                     game:GetService("VirtualInputManager"):SendMouseWheelEvent("0", "0", false, game)
-                                    wait(0.000001)
+                                    game:GetService("RunService").Heartbeat:wait()
                         until SpeedGlitch == false
                     end
                 end
