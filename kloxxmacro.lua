@@ -1,25 +1,18 @@
---logs vault
-local name = 180
-local keybind = "x"
-
---Script
-
-gv = false
-    plr = game.Players.LocalPlayer
-    mouse = plr:GetMouse()
-    mouse.KeyDown:connect(function(key)
-        if key == keybind and gv == false then
-            gv = true
-            game.Players.LocalPlayer.Character.Humanoid.Name = "Humz"
-            game.Players.LocalPlayer.Character.Humz.WalkSpeed = name
-            game.Players.LocalPlayer.Character.Humz.JumpPower = 50
-        elseif key == keybind and gv == true then
-            gv = false
-            game.Players.LocalPlayer.Character.Humz.WalkSpeed = 16
-            game.Players.LocalPlayer.Character.Humz.JumpPower = 50
-            game.Players.LocalPlayer.Character.Humz.Name = "Humanoid"
-        end
-    end)
+local Player = game:GetService("Players").LocalPlayer
+            local Mouse = Player:GetMouse()
+            local SpeedGlitch = false
+            Mouse.KeyDown:Connect(function(Key)
+                if Key == "x" then
+                    SpeedGlitch = not SpeedGlitch
+                    if SpeedGlitch == true then
+                        repeat game:GetService("VirtualInputManager"):SendMouseWheelEvent("0", "0", true, game)
+                                    wait(0.000001)
+                                    game:GetService("VirtualInputManager"):SendMouseWheelEvent("0", "0", false, game)
+                                    wait(0.000001)
+                        until SpeedGlitch == false
+                    end
+                end
+            end)
 
 game:GetService("StarterGui"):SetCore("SendNotification", {Title = "9XN RUNS U NIGGAS!", Text = "9XN ASKING FOR COMP", Duration = 4,});
 
