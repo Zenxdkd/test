@@ -2,7 +2,7 @@ local Player = game:GetService("Players").LocalPlayer
             local Mouse = Player:GetMouse()
             local SpeedGlitch = false
             Mouse.KeyDown:Connect(function(Key)
-                if Key == "x" then
+                if Key == "c" then
                     SpeedGlitch = not SpeedGlitch
                     if SpeedGlitch == true then
                         repeat game:GetService("VirtualInputManager"):SendMouseWheelEvent("0", "0", true, game)
