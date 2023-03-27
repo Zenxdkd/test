@@ -1,31 +1,4 @@
-getgenv().KLOX = {
-    Silent = {
-        Enabled = true,
-        Part = "HumanoidRootPart",
-        Pred = 0.124,
-        ClosestPart = true,
-    },
-    FOV = {
-        Visible = false,
-        Radius = 35
-    },
-    Tracer = {
-        Key = "Q",
-        Enabled = true,
-        Pred = 0.19,
-        Part = "HumanoidRootPart",
-        Smoothness = 0.025
-    },
-    Misc = {
-        UnlockedOnDeath = true,
-        Shake = true,
-        ShakeValue = 45
-    },
-    Macro = {
-        Enabled = true,
-        Keybind = "x"
-    },
-}
+
 
 local Players, Client, Mouse, RS, Camera =
 game:GetService("Players"),
