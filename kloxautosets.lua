@@ -259,41 +259,41 @@ if getgenv().KLOX.Misc.AutoPingSets == true and getgenv().KLOX.Horizontal.Predic
     local split = string.split(pingvalue, "(")
     local ping = tonumber(split[1])
     if ping > 190 then
-        getgenv().Settings.Horizontal.PredictionVelocity = 0.1865
+        getgenv().KLOX.Horizontal.PredictionVelocity = 0.1865
     elseif ping > 180 then
-        getgenv().Settings.Horizontal.PredictionVelocity = 0.1848
+        getgenv().KLOX.Horizontal.PredictionVelocity = 0.1848
     elseif ping > 170 then
-        getgenv().Settings.Horizontal.PredictionVelocity = 0.1672
+        getgenv().KLOX.Horizontal.PredictionVelocity = 0.1672
     elseif ping > 160 then
-        getgenv().Settings.Horizontal.PredictionVelocity = 0.1663
+        getgenv().KLOX.Horizontal.PredictionVelocity = 0.1663
     elseif ping > 150 then
-        getgenv().Settings.Horizontal.PredictionVelocity = 0.1514
+        getgenv().KLOX.Horizontal.PredictionVelocity = 0.1514
     elseif ping > 140 then
-        getgenv().Settings.Horizontal.PredictionVelocity = 0.153
+        getgenv().KLOX.Horizontal.PredictionVelocity = 0.153
     elseif ping > 130 then
-        getgenv().Settings.Horizontal.PredictionVelocity = 0.1737
+        getgenv().KLOX.Horizontal.PredictionVelocity = 0.1737
     elseif ping > 120 then
-        getgenv().Settings.Horizontal.PredictionVelocity = 0.1401
+        getgenv().KLOX.Horizontal.PredictionVelocity = 0.1401
     elseif ping > 110 then
-        getgenv().Settings.Horizontal.PredictionVelocity = 0.1367
+        getgenv().KLOX.Horizontal.PredictionVelocity = 0.1367
     elseif ping > 100 then
-        getgenv().Settings.Horizontal.PredictionVelocity = 0.146
+        getgenv().KLOX.Horizontal.PredictionVelocity = 0.146
     elseif ping > 90 then
-        getgenv().Settings.Horizontal.PredictionVelocity = 0.138
+        getgenv().KLOX.Horizontal.PredictionVelocity = 0.138
     elseif ping > 80 then
-        getgenv().Settings.Horizontal.PredictionVelocity = 0.13181
+        getgenv().KLOX.Horizontal.PredictionVelocity = 0.13181
     elseif ping > 70 then
-        getgenv().Settings.Horizontal.PredictionVelocity = 0.12951
+        getgenv().KLOX.Horizontal.PredictionVelocity = 0.12951
     elseif ping > 60 then
-        getgenv().Settings.Horizontal.PredictionVelocity = 0.12731
+        getgenv().KLOX.Horizontal.PredictionVelocity = 0.12731
     elseif ping > 50 then
-        getgenv().Settings.Horizontal.PredictionVelocity = 0.12766
+        getgenv().KLOX.Horizontal.PredictionVelocity = 0.12766
     elseif ping > 40 then
-        getgenv().Settings.Horizontal.PredictionVelocity = 0.12471
+        getgenv().KLOX.Horizontal.PredictionVelocity = 0.12471
     elseif ping > 30 then
-        getgenv().Settings.Horizontal.PredictionVelocity = 0.11911
+        getgenv().KLOX.Horizontal.PredictionVelocity = 0.11911
     elseif ping > 20 then
-        getgenv().Settings.Horizontal.PredictionVelocity = 0.12588
+        getgenv().KLOX.Horizontal.PredictionVelocity = 0.12588
     end
 end
 
@@ -324,4 +324,4 @@ local Player = game:GetService("Players").LocalPlayer
                         until SpeedGlitch == false
                     end
                 end
-            end)            
+            end)                 
