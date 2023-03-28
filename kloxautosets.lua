@@ -1,36 +1,3 @@
-getgenv().KLOX = {
-    Silent = {
-        Enabled = true,
-        Part = "HumanoidRootPart",
-        Pred = 0.12471,
-        ClosestPart = true,
-    },
-    FOV = {
-        Visible = false,
-        Radius = 35
-    },
-    Tracer = {
-        Key = "Q",
-        Enabled = true,
-        Pred = 0.19,
-        Part = "HumanoidRootPart",
-        Smoothness = 0.025
-    },
-    Misc = {
-        UnlockedOnDeath = true,
-        Shake = true,
-        ShakeValue = 45
-        AutoPingSets = true
-    },
-    Macro = {
-        Enabled = true,
-        Keybind = "x"
-    },
-    Horizontal = {
-        PredictMovement = true,
-        PredictionVelocity = 0.12471
-    },    
-}
 
 
 local Players, Client, Mouse, RS, Camera =
