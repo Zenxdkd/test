@@ -14,8 +14,8 @@ local UpdateFOV = function ()
     if not (Circle) then
         return Circle
     end
-    Circle.Visible = getgenv().KLOX.FOV["Visible"]
-    Circle.Radius = getgenv().KLOX.FOV["Radius"] * 3
+    Circle.Visible = getgenv().VPN.FOV["Visible"]
+    Circle.Radius = getgenv().VPN.FOV["Radius"] * 3
     Circle.Position = Vector2.new(Mouse.X, Mouse.Y)
     return Circle
 end
@@ -80,8 +80,8 @@ local Prey
 task.spawn(function ()
 while task.wait() do
     if Prey then
-        if getgenv().KLOX.Silent.Enabled and getgenv().KLOX.Silent.ClosestPart == true then
-            getgenv().KLOX.Silent["Part"] = tostring(GetClosestBodyPart(Prey.Character))
+        if getgenv().VPN.Silent.Enabled and getgenv().VPN.Silent.ClosestPart == true then
+            getgenv().VPN.Silent["Part"] = tostring(GetClosestBodyPart(Prey.Character))
         end
     end
 end
@@ -92,13 +92,13 @@ local backupindex = grmt.__index
 setreadonly(grmt, false)
 
 grmt.__index = newcclosure(function(self, v)
-if (getgenv().KLOX.Silent.Enabled and Mouse and tostring(v) == "Hit") then
+if (getgenv().VPN.Silent.Enabled and Mouse and tostring(v) == "Hit") then
 
     Prey = ClosestPlrFromMouse()
 
     if Prey then
-        local endpoint = game.Players[tostring(Prey)].Character[getgenv().KLOX.Silent["Part"]].CFrame + (
-            game.Players[tostring(Prey)].Character[getgenv().KLOX.Silent["Part"]].Velocity * getgenv().KLOX.Silent.Pred
+        local endpoint = game.Players[tostring(Prey)].Character[getgenv().VPN.Silent["Part"]].CFrame + (
+            game.Players[tostring(Prey)].Character[getgenv().VPN.Silent["Part"]].Velocity * getgenv().VPN.Silent.Pred
         )
         return (tostring(v) == "Hit" and endpoint)
     end
@@ -112,9 +112,9 @@ local Plr
 
 
 Mouse.KeyDown:Connect(function(Key)
-    local Keybind = getgenv().KLOX.Tracer.Key:lower()
+    local Keybind = getgenv().VPN.Tracer.Key:lower()
     if (Key == Keybind) then
-        if getgenv().KLOX.Tracer.Enabled == true then
+        if getgenv().VPN.Tracer.Enabled == true then
             IsTargetting = not IsTargetting
             if IsTargetting then
                 Plr = GetClosest()
@@ -193,29 +193,29 @@ function GetNearestPartToCursorOnCharacter(character)
 end
 
 game.RunService.Heartbeat:Connect(function()
-    if getgenv().KLOX.Tracer.Enabled == true and Plr and Plr.Character ~= nil then
-        if getgenv().KLOX.Misc.UnlockedOnDeath then
+    if getgenv().VPN.Tracer.Enabled == true and Plr and Plr.Character ~= nil then
+        if getgenv().VPN.Misc.UnlockedOnDeath then
             if Plr.Character.BodyEffects["K.O"].Value then Plr = nil end
         end
-        if getgenv().KLOX.Misc.Shake then
-            local Main = CFrame.new(Camera.CFrame.p,Plr.Character[getgenv().KLOX.Tracer.Part].Position + Plr.Character[getgenv().KLOX.Tracer.Part].Velocity * getgenv().KLOX.Tracer.Pred +
+        if getgenv().VPN.Misc.Shake then
+            local Main = CFrame.new(Camera.CFrame.p,Plr.Character[getgenv().VPN.Tracer.Part].Position + Plr.Character[getgenv().VPN.Tracer.Part].Velocity * getgenv().VPN.Tracer.Pred +
             Vector3.new(
-                math.random(-getgenv().KLOX.Misc.ShakeValue, getgenv().KLOX.Misc.ShakeValue),
-                math.random(-getgenv().KLOX.Misc.ShakeValue, getgenv().KLOX.Misc.ShakeValue),
-                math.random(-getgenv().KLOX.Misc.ShakeValue, getgenv().KLOX.Misc.ShakeValue)
+                math.random(-getgenv().VPN.Misc.ShakeValue, getgenv().VPN.Misc.ShakeValue),
+                math.random(-getgenv().VPN.Misc.ShakeValue, getgenv().VPN.Misc.ShakeValue),
+                math.random(-getgenv().VPN.Misc.ShakeValue, getgenv().VPN.Misc.ShakeValue)
             ) * 0.1)
-            Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().KLOX.Tracer.Smoothness, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+            Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().VPN.Tracer.Smoothness, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
         else
-            local Main = CFrame.new(Camera.CFrame.p,Plr.Character[getgenv().KLOX.Tracer.Part].Position + Plr.Character[getgenv().KLOX.Tracer.Part].Velocity * getgenv().KLOX.Tracer.Pred)
-            Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().KLOX.Tracer.Smoothness, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+            local Main = CFrame.new(Camera.CFrame.p,Plr.Character[getgenv().VPN.Tracer.Part].Position + Plr.Character[getgenv().VPN.Tracer.Part].Velocity * getgenv().VPN.Tracer.Pred)
+            Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().VPN.Tracer.Smoothness, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
         end
     end
 end)
 
 task.spawn(function()
     while task.wait() do
-        if getgenv().KLOX.Tracer.Enabled and Plr ~= nil and (Plr.Character) then
-            getgenv().KLOX.Tracer.Part = tostring(GetNearestPartToCursorOnCharacter(Plr.Character))
+        if getgenv().VPN.Tracer.Enabled and Plr ~= nil and (Plr.Character) then
+            getgenv().VPN.Tracer.Part = tostring(GetNearestPartToCursorOnCharacter(Plr.Character))
         end
     end
 end)
@@ -225,7 +225,7 @@ local Player = game:GetService("Players").LocalPlayer
             local Mouse = Player:GetMouse()
             local SpeedGlitch = false
             Mouse.KeyDown:Connect(function(Key)
-                if getgenv().KLOX.Macro.Enabled == true and Key == getgenv().KLOX.Macro.Keybind then
+                if getgenv().VPN.Macro.Enabled == true and Key == getgenv().VPN.Macro.Keybind then
                     SpeedGlitch = not SpeedGlitch
                     if SpeedGlitch == true then
                         repeat game:GetService("RunService").Heartbeat:wait()
