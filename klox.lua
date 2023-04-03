@@ -1,4 +1,4 @@
-getgenv().KLOX = {
+getgenv().VPN = {
     Silent = {
         Enabled = true,
         Part = "HumanoidRootPart",
@@ -25,7 +25,7 @@ getgenv().KLOX = {
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/matas3535/PoopLibrary/main/Library.lua"))() -- Could Also Save It In Your Workspace And Do loadfile("Library.lua")()
 
-local Window = Library:New({Name = "| KLOX Private | uwu >.<  ", Size = Vector2.new(489, 570), Accent = Color3.fromRGB(7, 0, 255)})
+local Window = Library:New({Name = "| VPN Private | uwu >.<  ", Size = Vector2.new(489, 570), Accent = Color3.fromRGB(7, 0, 255)})
 --
 local Aimbot = Window:Page({Name = "Aimbot"})
 local Settings = Window:Page({Name = "Settings"})
@@ -42,7 +42,7 @@ Default = true,
 Pointer = "AimbotMain_Enabled",
 Callback = function(v)
 print(v)
-getgenv().KLOX.Tracer.Enabled = v  
+getgenv().VPN.Tracer.Enabled = v  
     
 end
 })
@@ -53,7 +53,7 @@ Default = false,
 Pointer = "AimbotMain_Enabled",
 Callback = function(v)
 print(v)
-getgenv().KLOX.FOV["Visible"] = v  
+getgenv().VPN.FOV["Visible"] = v  
         
 end
 })
@@ -64,7 +64,7 @@ Default = true,
 Pointer = "Shake_Enabled",
 Callback = function(v)
 print(v)
-getgenv().KLOX.Misc.Shake = v  
+getgenv().VPN.Misc.Shake = v  
             
 end
 })
@@ -75,7 +75,7 @@ Default = true,
 Pointer = "UnlockOnDeath_Enabled",
 Callback = function(v)
 print(v)
-getgenv().KLOX.Misc.UnlockedOnDeath = v  
+getgenv().VPN.Misc.UnlockedOnDeath = v  
                 
 end
 })
@@ -87,7 +87,7 @@ Default = 0.025,
 Decimals = 0.001,
 Pointer = "AimbotMain_Smoothness",
 Callback = function(v)
-getgenv().KLOX.Tracer.Smoothness = v
+getgenv().VPN.Tracer.Smoothness = v
  
 end  
 })
@@ -99,7 +99,7 @@ Default = 25,
 Decimals = 0.01,
 Pointer = "AimbotMain_Radius",
 Callback = function(v)
-getgenv().KLOX.FOV["Radius"] = v  
+getgenv().VPN.FOV["Radius"] = v  
  
 end  
 })
@@ -111,7 +111,7 @@ Default = 40,
 Decimals = 0.001,
 Pointer = "AimbotMain_Booty",
 Callback = function(v)
-getgenv().KLOX.Misc.ShakeValue = v
+getgenv().VPN.Misc.ShakeValue = v
   
 end  
 })
@@ -123,7 +123,7 @@ Default = 0.19,
 Decimals = 0.001,
 Pointer = "AimbotMain_Booty",
 Callback = function(v)
-getgenv().KLOX.Tracer.Pred = v
+getgenv().VPN.Tracer.Pred = v
   
 end  
 })
@@ -135,7 +135,7 @@ Default = 0.128,
 Decimals = 0.001,
 Pointer = "AimbotMain_Booty",
 Callback = function(v)
-getgenv().KLOX.Misc.ShakeValue = v
+getgenv().VPN.Misc.ShakeValue = v
   
 end  
 })
@@ -167,8 +167,8 @@ local UpdateFOV = function ()
 if (not Circle) then
     return Circle
 end
-Circle.Visible = getgenv().KLOX.FOV["Visible"]
-Circle.Radius = getgenv().KLOX.FOV["Radius"] * 3
+Circle.Visible = getgenv().VPN.FOV["Visible"]
+Circle.Radius = getgenv().VPN.FOV["Radius"] * 3
 Circle.Position = Vector2.new(Mouse.X, Mouse.Y + (game:GetService("GuiService"):GetGuiInset().Y))
 return Circle
 end
@@ -233,8 +233,8 @@ local Prey
 task.spawn(function ()
 while task.wait() do
     if Prey then
-        if getgenv().KLOX.Silent.Enabled and getgenv().KLOX.Silent.ClosestPart == true then
-            getgenv().KLOX.Silent["Part"] = tostring(GetClosestBodyPart(Prey.Character))
+        if getgenv().VPN.Silent.Enabled and getgenv().VPN.Silent.ClosestPart == true then
+            getgenv().VPN.Silent["Part"] = tostring(GetClosestBodyPart(Prey.Character))
         end
     end
 end
@@ -245,13 +245,13 @@ local backupindex = grmt.__index
 setreadonly(grmt, false)
 
 grmt.__index = newcclosure(function(self, v)
-if (getgenv().KLOX.Silent.Enabled and Mouse and tostring(v) == "Hit") then
+if (getgenv().VPN.Silent.Enabled and Mouse and tostring(v) == "Hit") then
 
     Prey = ClosestPlrFromMouse()
 
     if Prey then
-        local endpoint = game.Players[tostring(Prey)].Character[getgenv().KLOX.Silent["Part"]].CFrame + (
-            game.Players[tostring(Prey)].Character[getgenv().KLOX.Silent["Part"]].Velocity * getgenv().KLOX.Silent.Pred
+        local endpoint = game.Players[tostring(Prey)].Character[getgenv().VPN.Silent["Part"]].CFrame + (
+            game.Players[tostring(Prey)].Character[getgenv().VPN.Silent["Part"]].Velocity * getgenv().VPN.Silent.Pred
         )
         return (tostring(v) == "Hit" and endpoint)
     end
@@ -265,9 +265,9 @@ local Plr
 
 
 Mouse.KeyDown:Connect(function(Key)
-    local Keybind = getgenv().KLOX.Tracer.Key:lower()
+    local Keybind = getgenv().VPN.Tracer.Key:lower()
     if (Key == Keybind) then
-        if getgenv().KLOX.Tracer.Enabled == true then
+        if getgenv().VPN.Tracer.Enabled == true then
             IsTargetting = not IsTargetting
             if IsTargetting then
                 Plr = GetClosest()
@@ -346,29 +346,29 @@ function GetNearestPartToCursorOnCharacter(character)
 end
 
 game.RunService.Heartbeat:Connect(function()
-    if getgenv().KLOX.Tracer.Enabled == true and Plr and Plr.Character ~= nil then
-        if getgenv().KLOX.Misc.UnlockedOnDeath then
+    if getgenv().VPN.Tracer.Enabled == true and Plr and Plr.Character ~= nil then
+        if getgenv().VPN.Misc.UnlockedOnDeath then
             if Plr.Character.BodyEffects["K.O"].Value then Plr = nil end
         end
-        if getgenv().KLOX.Misc.Shake then
-            local Main = CFrame.new(Camera.CFrame.p,Plr.Character[getgenv().KLOX.Tracer.Part].Position + Plr.Character[getgenv().KLOX.Tracer.Part].Velocity * getgenv().KLOX.Tracer.Pred +
+        if getgenv().VPN.Misc.Shake then
+            local Main = CFrame.new(Camera.CFrame.p,Plr.Character[getgenv().VPN.Tracer.Part].Position + Plr.Character[getgenv().VPN.Tracer.Part].Velocity * getgenv().VPN.Tracer.Pred +
             Vector3.new(
-                math.random(-getgenv().KLOX.Misc.ShakeValue, getgenv().KLOX.Misc.ShakeValue),
-                math.random(-getgenv().KLOX.Misc.ShakeValue, getgenv().KLOX.Misc.ShakeValue),
-                math.random(-getgenv().KLOX.Misc.ShakeValue, getgenv().KLOX.Misc.ShakeValue)
+                math.random(-getgenv().VPN.Misc.ShakeValue, getgenv().VPN.Misc.ShakeValue),
+                math.random(-getgenv().VPN.Misc.ShakeValue, getgenv().VPN.Misc.ShakeValue),
+                math.random(-getgenv().VPN.Misc.ShakeValue, getgenv().VPN.Misc.ShakeValue)
             ) * 0.1)
-            Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().KLOX.Tracer.Smoothness, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+            Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().VPN.Tracer.Smoothness, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
         else
-            local Main = CFrame.new(Camera.CFrame.p,Plr.Character[getgenv().KLOX.Tracer.Part].Position + Plr.Character[getgenv().KLOX.Tracer.Part].Velocity * getgenv().KLOX.Tracer.Pred)
-            Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().KLOX.Tracer.Smoothness, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+            local Main = CFrame.new(Camera.CFrame.p,Plr.Character[getgenv().VPN.Tracer.Part].Position + Plr.Character[getgenv().VPN.Tracer.Part].Velocity * getgenv().VPN.Tracer.Pred)
+            Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().VPN.Tracer.Smoothness, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
         end
     end
 end)
 
 task.spawn(function()
     while task.wait() do
-        if getgenv().KLOX.Tracer.Enabled and Plr ~= nil and (Plr.Character) then
-            getgenv().KLOX.Tracer.Part = tostring(GetNearestPartToCursorOnCharacter(Plr.Character))
+        if getgenv().VPN.Tracer.Enabled and Plr ~= nil and (Plr.Character) then
+            getgenv().VPN.Tracer.Part = tostring(GetNearestPartToCursorOnCharacter(Plr.Character))
         end
     end
 end)
