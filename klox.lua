@@ -2,27 +2,29 @@ getgenv().KLOX = {
     Silent = {
         Enabled = true,
         Part = "HumanoidRootPart",
-        Pred = 0.11,
+        Pred = 0.135,
         ClosestPart = true,
     },
     FOV = {
-        Visible = false,
-        Radius = 20
+        Visible = true,
+        Radius = 50
     },
     Tracer = {
         Key = "Q",
         Enabled = true,
-        Pred = 0.01,
+        Pred = 0.065,
         Part = "HumanoidRootPart",
-        Smoothness = 0.009
+        Smoothness = 0.053
+    },
+    Resolver = {
+        Enabled = true,
     },
     Misc = {
         UnlockedOnDeath = true,
         Shake = false,
-        ShakeValue = 0.58
+        ShakeValue = 45
     },
 }
-
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/matas3535/PoopLibrary/main/Library.lua"))() -- Could Also Save It In Your Workspace And Do loadfile("Library.lua")()
 
 local Window = Library:New({Name = "| KLOX Private | uwu >.<  ", Size = Vector2.new(489, 570), Accent = Color3.fromRGB(7, 0, 255)})
@@ -60,7 +62,7 @@ end
 
 uwuMisc:Toggle({
 Name = "Shake",
-Default = false,
+Default = true,
 Pointer = "Shake_Enabled",
 Callback = function(v)
 print(v)
@@ -80,10 +82,21 @@ getgenv().KLOX.Misc.UnlockedOnDeath = v
 end
 })
 
+uwuAimbot:Toggle({
+Name = "Resolver",
+Default = false,
+Pointer = "ResolverMain_Enabled",
+Callback = function(v)
+print(v)
+getgenv().KLOX.Resolver.Enabled = v  
+        
+end
+})
+
 uwuSettings:Slider({Name = "Smoothness",
 Minimum = 0.001,
 Maximum = 1.5,
-Default = 0.0535,
+Default = 0.025,
 Decimals = 0.001,
 Pointer = "AimbotMain_Smoothness",
 Callback = function(v)
@@ -95,7 +108,7 @@ end
 uwuSettings:Slider({Name = "FOV Radius",
 Minimum = 0.01,
 Maximum = 100,
-Default = 50,
+Default = 25,
 Decimals = 0.01,
 Pointer = "AimbotMain_Radius",
 Callback = function(v)
@@ -119,7 +132,7 @@ end
 uwuSettings:Slider({Name = "Tracer Prediction",
 Minimum = 0.001,
 Maximum = 10,
-Default = 0.065,
+Default = 0.19,
 Decimals = 0.001,
 Pointer = "AimbotMain_Booty",
 Callback = function(v)
@@ -131,7 +144,7 @@ end
 uwuSettings:Slider({Name = "Silent Prediction",
 Minimum = 0.10,
 Maximum = 0.195,
-Default = 0.135,
+Default = 0.128,
 Decimals = 0.001,
 Pointer = "AimbotMain_Booty",
 Callback = function(v)
@@ -372,3 +385,19 @@ task.spawn(function()
         end
     end
 end)
+
+RS.Heartbeat:Connect(function()
+    if  getgenv().KLOX.Resolver.Enabled then
+        pcall(function()
+            for i,v in pairs(game.Players:GetChildren()) do
+                if v ~= game.Players.LocalPlayer  then
+                    local hrp = v.Character.HumanoidRootPart
+                    hrp.Velocity =  Vector3.new(0.1,-0,0.34) *(0.11^00)
+                    hrp.AssemblyLinearVelocity = Vector3.new(0,0,0) *(0^0)
+                    hrp.Velocity = Vector3.new(hrp.Velocity.X, 0, hrp.Velocity.Z)    
+                    hrp.AssemblyLinearVelocity = Vector3.new(hrp.Velocity.X, 0, hrp.Velocity.Z) 
+                end
+            end
+        end)
+    end
+    end)
